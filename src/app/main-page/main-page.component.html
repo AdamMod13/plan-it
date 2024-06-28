@@ -1,0 +1,16 @@
+<div class="flex flex-col h-full w-full">
+  <div class="flex justify-between">
+    <h1>Schedule</h1>
+    <p-calendar
+      [(ngModel)]="date"
+      [showIcon]="true"
+      [showOnFocus]="false"
+      dateFormat='dd/mm/yy'
+      name="date"
+      inputId="buttondisplay"></p-calendar>
+  </div>
+  <div class="flex">
+    <app-today-section></app-today-section>
+    <app-calendar></app-calendar>
+  </div>
+</div>

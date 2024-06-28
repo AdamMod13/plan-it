@@ -1,1 +1,61 @@
-<p>navbar works!</p>
+<div class="h-full w-1/5 min-w-60 bg-gray-100 flex flex-col justify-start">
+  <div class="flex items-center max-h-min border-solid border-gray-300 border-b-2 p-6">
+    <img alt="planit_logo" class="h-14" src="assets/logo_2.png"/>
+  </div>
+  <div class="flex flex-col justify-start content-start space-y-12 h-max p-6">
+    <div class="flex flex-col space-y-2">
+      <h3 class="cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">Today</h3>
+      <h3 class="cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">Tomorrow</h3>
+      <h3 class="cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">This Week</h3>
+      <h3 class="cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">Backlog</h3>
+    </div>
+
+    <div class="flex flex-col p-2 space-y-6">
+      <h1>Categories</h1>
+      <div class="flex space-x-3">
+        <input type="checkbox" name="productivity" value="productivity">
+        <label>Productivity</label>
+      </div>
+      <div class="flex space-x-3">
+        <input type="checkbox" name="hobby" value="hobby">
+        <label>Hobby</label>
+      </div>
+      <div class="flex space-x-3">
+        <input type="checkbox" name="personal" value="personal">
+        <label>Personal</label>
+      </div>
+      <div class="flex space-x-3">
+        <input type="checkbox" name="work" value="work">
+        <label>Work</label>
+      </div>
+      <div class="flex space-x-3">
+        <input type="checkbox" name="sport" value="sport">
+        <label>Sport</label>
+      </div>
+    </div>
+
+    <div class="flex flex-col p-2 space-y-2">
+      <h1>Work Tags</h1>
+      <div class="flex space-x-3 cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">
+        <h3>#</h3>
+        <h3>Design</h3>
+      </div>
+      <div class="flex space-x-3 cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">
+        <h3>#</h3>
+        <h3>Frontend</h3>
+      </div>
+      <div class="flex space-x-3 cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">
+        <h3>#</h3>
+        <h3>Backend</h3>
+      </div>
+      <div class="flex space-x-3 cursor-pointer hover:bg-gray-200 rounded-lg p-2 ease-in-out duration-75">
+        <h3>#</h3>
+        <h3>Database</h3>
+      </div>
+    </div>
+
+    <div class="flex flex-col p-2 space-y-6">
+      <button class="border-solid rounded-md border-2 border-gray-300 p-2 shadow- hover:shadow-md hover:scale-105 duration-150">Add New Task</button>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { CalendarComponent } from './main-page/calendar/calendar.component';
 import { TodaySectionComponent } from './main-page/today-section/today-section.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {CalendarModule} from "primeng/calendar";
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { TodaySectionComponent } from './main-page/today-section/today-section.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    CalendarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
