@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CalendarModule } from "primeng/calendar";
 import { FilterSectionComponent } from "./main-page/filter-section/filter-section.component";
+import { DialogModule } from 'primeng/dialog';
+import { AddEditTaskModalComponent } from "./main-page/filter-section/add-edit-task-modal/add-edit-task-modal.component";
+import { InputTextModule } from "primeng/inputtext";
 
 @NgModule({
   declarations: [
@@ -19,14 +22,17 @@ import { FilterSectionComponent } from "./main-page/filter-section/filter-sectio
     MainPageComponent,
     CalendarComponent,
     FilterSectionComponent,
+    AddEditTaskModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DialogModule,
+    InputTextModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     CalendarModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
