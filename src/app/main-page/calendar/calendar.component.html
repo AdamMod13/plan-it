@@ -1,3 +1,25 @@
-<div class="flex w-full h-full">
-asdasd
+<div class="w-full h-full">
+  @switch (viewMode()) {
+    @case (ViewModeEnum.DAY) {
+      <div class="flex flex-row">
+
+      </div>
+    }
+    @case (ViewModeEnum.WEEK) {
+      <div class="grid-cols-7">
+        <ng-template *ngIf="getMonthFullWeeks()">
+
+        </ng-template>
+      </div>
+    }
+    @case (ViewModeEnum.MONTH) {
+      <div class="grid-cols-7 grid-rows-5">
+        <ng-template *ngIf="getMonthFullWeeks()">
+
+        </ng-template>
+      </div>
+    }
+  }
 </div>
+
+

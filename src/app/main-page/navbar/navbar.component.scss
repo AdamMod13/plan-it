@@ -1,0 +1,9 @@
+::ng-deep .p-calendar input {
+  width: 8rem;
+  padding: 0;
+  border: 0;
+}
+
+::ng-deep .p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
+  box-shadow: none;
+}
