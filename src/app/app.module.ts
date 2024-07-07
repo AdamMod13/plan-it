@@ -14,6 +14,7 @@ import { FilterSectionComponent } from "./main-page/filter-section/filter-sectio
 import { DialogModule } from 'primeng/dialog';
 import { AddEditTaskModalComponent } from "./main-page/filter-section/add-edit-task-modal/add-edit-task-modal.component";
 import { InputTextModule } from "primeng/inputtext";
+import {CheckboxModule} from "primeng/checkbox";
 
 @NgModule({
   declarations: [
@@ -24,16 +25,17 @@ import { InputTextModule } from "primeng/inputtext";
     FilterSectionComponent,
     AddEditTaskModalComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    DialogModule,
-    InputTextModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    CalendarModule,
-    FormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        DialogModule,
+        InputTextModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        CalendarModule,
+        FormsModule,
+        CheckboxModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

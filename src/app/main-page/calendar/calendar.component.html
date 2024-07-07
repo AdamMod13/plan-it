@@ -1,8 +1,40 @@
-<div class="w-full h-full">
+<div class="w-full h-full bg-gray-50 z-50">
   @switch (viewMode()) {
     @case (ViewModeEnum.DAY) {
-      <div class="flex flex-row">
-
+      <div class="w-full h-full flex flex-row justify-center items-center">
+        <div class="w-1/4 h-full border-solid border-r-[1px] border-gray-300 bg-white">
+          <div class="w-full flex flex-col justify-start items-start pl-6 pr-8 py-8 space-y-12">
+            <div class="w-full">
+              <h2 class="font-semibold">Today Activity</h2>
+              <p>Hi Adam what are your plans for today!</p>
+            </div>
+            <div class="w-full space-y-2">
+              <h2 class="mb-2">Work</h2>
+              <div class="flex flex-col space-y-2">
+                <div class="flex w-full items-center justify-between">
+                  <div class="flex items-center">
+                    <p-checkbox
+                      value="work_1"
+                      inputId="work_1"
+                    />
+                    <label class="text-sm" for="work_1">Work on planIt app </label>
+                  </div>
+                  <div class="flex flex-row justify-center items-center space-x-2 px-2 py-1 rounded-xl bg-gray-200">
+                    <p class="w-2 h-2 rounded-full bg-red-700"></p>
+                    <p>9.00 - 10.30</p>
+                  </div>
+                </div>
+                <div class="flex ml-4 justify-start items-center space-x-2">
+                  <p class="text-xs px-2 py-1 rounded-md bg-gray-200">#Frontend</p>
+                  <p class="text-xs px-2 py-1 rounded-md bg-gray-200">#Backend</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-3/4 h-full px-6 py-4">
+          <div class="w-full h-full bg-white rounded-xl shadow-md"></div>
+        </div>
       </div>
     }
     @case (ViewModeEnum.WEEK) {

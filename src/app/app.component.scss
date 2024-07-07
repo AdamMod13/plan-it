@@ -1,0 +1,13 @@
+::ng-deep {
+  .p-checkbox {
+    margin-right: 0.5rem;
+
+    .p-highlight {
+      background-color: #f38a6d !important;
+    }
+  }
+
+  .p-checkbox-box {
+    border: 1px solid gray;
+  }
+}
