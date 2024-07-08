@@ -6,12 +6,9 @@ import { ViewMode } from "../utils/viewModeEnum.model";
 })
 export class CalendarService {
   public viewMode: WritableSignal<ViewMode> = signal(ViewMode.WEEK);
+  public selectedDate: WritableSignal<Date> = signal(new Date());
 
   constructor() {}
-
-  public getViewMode(): ViewMode {
-    return this.viewMode();
-  }
 
   public setViewMode(viewMode: ViewMode): void {
     this.viewMode.set(viewMode);
@@ -19,5 +16,13 @@ export class CalendarService {
 
   public viewModeChanges(): ViewMode {
     return this.viewMode();
+  }
+
+  public setSelectedDate(newDate: Date): void {
+    this.selectedDate.set(newDate);
+  }
+
+  public selectedDateChanges(): Date {
+    return this.selectedDate();
   }
 }

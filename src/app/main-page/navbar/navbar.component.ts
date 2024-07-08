@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, computed, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, computed, Signal, ViewChild} from '@angular/core';
 import {CalendarService} from "../../services/calendar.service";
 import {ViewMode} from "../../utils/viewModeEnum.model";
 import {Calendar} from "primeng/calendar";
 import moment from "moment";
+import {toObservable} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +13,15 @@ import moment from "moment";
 export class NavbarComponent implements AfterViewInit {
   @ViewChild(Calendar) calendar: Calendar | undefined;
 
-  public viewMode = computed(() => this.calendarService.viewModeChanges());
+  public viewMode: Signal<ViewMode> = computed(() => this.calendarService.viewModeChanges());
+  public selectedDate: Signal<Date> = computed(() => this.calendarService.selectedDateChanges());
   public ViewModeEnum = ViewMode;
-  public selectedDate: Date = new Date();
 
-  constructor(private calendarService: CalendarService) {}
+  constructor(private calendarService: CalendarService) {
+    toObservable(this.viewMode).subscribe((viewMode: ViewMode) => {
+      this.changeCalendarViewMode(viewMode);
+    });
+  }
 
   public ngAfterViewInit(): void {
     this.setWeeklyDateFormat();
@@ -42,14 +47,14 @@ export class NavbarComponent implements AfterViewInit {
   public changeToNextPeriod(): void {
     switch (this.viewMode()) {
       case ViewMode.DAY:
-        this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        this.selectedDate().setDate(this.selectedDate().getDate() + 1);
         break;
       case ViewMode.WEEK:
-        this.selectedDate.setDate(this.selectedDate.getDate() + 7);
+        this.selectedDate().setDate(this.selectedDate().getDate() + 7);
         this.setWeeklyDateFormat();
         break;
       case ViewMode.MONTH:
-        this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+        this.selectedDate().setMonth(this.selectedDate().getMonth() + 1);
         break;
     }
     this.calendar?.updateInputfield();
@@ -58,26 +63,33 @@ export class NavbarComponent implements AfterViewInit {
   public changeToPreviousPeriod(): void {
     switch (this.viewMode()) {
       case ViewMode.DAY:
-        this.selectedDate.setDate(this.selectedDate.getDate() - 1);
+        this.selectedDate().setDate(this.selectedDate().getDate() - 1);
         break;
       case ViewMode.WEEK:
-        this.selectedDate.setDate(this.selectedDate.getDate() - 7);
+        this.selectedDate().setDate(this.selectedDate().getDate() - 7);
         this.setWeeklyDateFormat();
         break;
       case ViewMode.MONTH:
-        this.selectedDate.setMonth(this.selectedDate.getMonth() - 1);
+        this.selectedDate().setMonth(this.selectedDate().getMonth() - 1);
         break;
     }
     this.calendar?.updateInputfield();
   }
 
-  public getWeekendDates(): string {
-    const beginWeekendDate = moment(this.selectedDate).clone().weekday(1).format('DD/MM');
-    const endWeekendDate = moment(this.selectedDate).clone().weekday(7).format('DD/MM')
-    return  beginWeekendDate + ' - ' + endWeekendDate + ' ' + this.selectedDate.getFullYear();
+  public onSelectedDateChange(newDate: Date): void {
+    this.calendarService.setSelectedDate(newDate);
+    if (this.viewMode() === ViewMode.WEEK) {
+      this.setWeeklyDateFormat();
+    }
   }
 
-  private setWeeklyDateFormat(): void {
+  public getWeekendDates(): string {
+    const beginWeekendDate = moment(this.selectedDate()).clone().weekday(1).format('DD/MM');
+    const endWeekendDate = moment(this.selectedDate()).clone().weekday(7).format('DD/MM')
+    return beginWeekendDate + ' - ' + endWeekendDate + ' ' + this.selectedDate().getFullYear();
+  }
+
+  public setWeeklyDateFormat(): void {
     if (this.calendar) {
       this.calendar.dateFormat = this.getWeekendDates();
       this.calendar?.updateInputfield();
