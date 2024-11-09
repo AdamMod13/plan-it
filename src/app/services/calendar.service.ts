@@ -1,11 +1,11 @@
-import {Injectable, Signal, signal, WritableSignal} from '@angular/core';
+import {Injectable, signal, WritableSignal} from '@angular/core';
 import { ViewMode } from "../utils/viewModeEnum.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalendarService {
-  public viewMode: WritableSignal<ViewMode> = signal(ViewMode.WEEK);
+  public viewMode: WritableSignal<ViewMode> = signal(ViewMode.DAY);
   public selectedDate: WritableSignal<Date> = signal(new Date());
 
   constructor() {}
