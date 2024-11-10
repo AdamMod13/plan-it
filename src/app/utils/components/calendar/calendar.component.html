@@ -1,7 +1,18 @@
-<div class="w-full h-full bg-white rounded-md shadow-md">
-  @switch (viewMode) {
+<div class="w-full h-full bg-white shadow-md rounded-2xl">
+  @switch (viewMode()) {
     @case (ViewModeEnum.DAY) {
-
+      <div class="w-full h-full grid grid-rows-[6%_repeat(24,7%)] gap-0.5 bg-gray-200 overflow-scroll min-h-0 min-w-0">
+        <div class="grid grid-cols-[0.3fr_1fr] gap-0.5 bg-gray-200 sticky top-0">
+          <div class="calendar-grid-child">UTC +1</div>
+          <div class="calendar-grid-child">{{ weekDays[selectedDate().getDay()] }}, {{ selectedDate().toLocaleDateString() }}</div>
+        </div>
+        @for(slot of hoursSlots; track slot[0]) {
+          <div class="grid grid-cols-[0.3fr_1fr] gap-0.5 bg-gray-200">
+            <div class="calendar-grid-child">{{ slot[1] }}</div>
+            <div class="calendar-grid-child"></div>
+          </div>
+        }
+      </div>
     }
     @case (ViewModeEnum.WEEK) {
 

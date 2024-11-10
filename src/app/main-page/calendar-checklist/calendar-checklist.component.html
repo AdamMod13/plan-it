@@ -1,5 +1,5 @@
-<div class="w-full h-full bg-gray-200 z-50">
-  <div class="w-full h-full flex flex-row justify-center items-center">
+<div class="w-min h-full bg-gray-200 z-50">
+  <div class="h-full flex flex-row justify-center items-center">
     @if (viewMode() === ViewModeEnum.DAY) {
       <div class="min-w-max max-w-80 h-full border-solid border-r-[1px] border-gray-300 bg-white">
         <div class="w-full flex flex-col justify-start items-start pl-6 pr-8 py-8 space-y-12">
@@ -32,7 +32,6 @@
         </div>
       </div>
     }
-    <app-calendar class="w-full h-full px-4 py-4" [viewMode]="viewMode()"></app-calendar>
   </div>
 </div>
 
