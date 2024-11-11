@@ -1,12 +1,16 @@
 import {Component, computed} from '@angular/core';
 import {ViewMode} from "../../viewModeEnum.model";
 import {CalendarService} from "../../../services/calendar.service";
+import {TaskCardComponent} from "./task-card/task-card.component";
 
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
   templateUrl: './calendar.component.html',
+  imports: [
+    TaskCardComponent
+  ],
   styleUrl: './calendar.component.scss'
 })
 export class CalendarComponent {
